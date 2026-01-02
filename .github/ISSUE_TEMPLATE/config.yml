@@ -1,8 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: Question / Support
-    url: https://github.com/pamsler/proxydeck/discussions
-    about: Ask questions and get support from the community
-  - name: Security Vulnerability
-    url: https://github.com/pamsler/proxydeck/security/advisories/new
-    about: Report security vulnerabilities privately

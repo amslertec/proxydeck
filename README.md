@@ -36,6 +36,18 @@ A powerful, self-hosted reverse proxy manager with built-in SSL certificate mana
 ![Users](images/users.png)
 *Multi-user support with MFA and Passkeys*
 
+### DNS Management
+![DNS](images/dns.png)
+*DNS provider configuration for wildcard certificates*
+
+### Profile
+![Profile](images/profile.png)
+*User profile with MFA and Passkey management*
+
+### Audit Log
+![Audit](images/audit.png)
+*Complete audit trail of all system changes*
+
 ### Settings
 ![Settings](images/settings.png)
 *Backup, API keys, webhooks, and SMTP configuration*

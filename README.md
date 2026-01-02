@@ -274,6 +274,18 @@ ProxyDeck runs as a Docker container with the following components:
 
 ---
 
+## Prerequisites
+
+Before starting, ensure:
+
+- **Ports 80 and 443** are forwarded to your server (required for Let's Encrypt)
+- **A domain name** pointing to your server's IP address
+- Docker and Docker Compose installed
+
+> **Important:** ProxyDeck requires a valid domain with SSL certificate. Access via IP address only will cause session issues (logout on page reload).
+
+---
+
 ## Quick Start
 
 ### 1. Download files
@@ -286,7 +298,7 @@ curl -fsSL https://raw.githubusercontent.com/pamsler/proxydeck/main/.env.example
 
 ### 2. Configure environment
 
-Edit `.env` and set at minimum:
+Edit `.env` and configure:
 
 ```bash
 # Admin credentials
@@ -297,9 +309,14 @@ ADMIN_PASS=your-secure-password-here
 JWT_SECRET=your-64-char-hex-secret
 MFA_ENCRYPTION_KEY=your-64-char-hex-key
 
-# Optional: Let's Encrypt email for SSL certificates
+# REQUIRED: Your domain for the dashboard (SSL certificate will be auto-generated)
+FRONTEND_URL=https://proxydeck.yourdomain.com
+
+# REQUIRED: Email for Let's Encrypt certificates
 ACME_EMAIL=your-email@example.com
 ```
+
+> **Note:** `FRONTEND_URL` is required for the first start. ProxyDeck will automatically create a proxy host and request an SSL certificate for this domain.
 
 ### 3. Create backup directory
 
@@ -330,10 +347,10 @@ Open `http://your-server-ip:8080` in your browser and log in with your admin cre
 | `ADMIN_PASS` | Yes | - | Admin password |
 | `JWT_SECRET` | Yes | - | JWT signing secret (64+ chars) |
 | `MFA_ENCRYPTION_KEY` | Yes | - | MFA encryption key (64+ chars) |
+| `FRONTEND_URL` | Yes | - | Dashboard domain (auto-creates proxy + SSL) |
+| `ACME_EMAIL` | Yes | - | Let's Encrypt registration email |
 | `ADMIN_EMAIL` | No | - | Admin email for notifications |
-| `ACME_EMAIL` | No | - | Let's Encrypt registration email |
 | `ACME_ACCOUNT` | No | - | Specific LE account to use |
-| `FRONTEND_URL` | No | - | Auto-setup proxy for this URL |
 | `TZ` | No | `Europe/Zurich` | Timezone |
 | `ENABLE_H3` | No | `1` | Enable HTTP/3 (QUIC) |
 | `MICROCACHE_SECS` | No | `5` | Micro-cache duration |

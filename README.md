@@ -1,6 +1,18 @@
-# ProxyDeck
+<p align="center">
+  <img src="images/logo.png" alt="ProxyDeck Logo" width="200">
+</p>
 
-A powerful, self-hosted reverse proxy manager with built-in SSL certificate management, Web Application Firewall (WAF), bot protection, and real-time analytics.
+<h1 align="center">ProxyDeck</h1>
+
+<p align="center">
+  <strong>Enterprise-grade self-hosted reverse proxy management platform</strong>
+</p>
+
+<p align="center">
+  Reverse Proxy | SSL Automation | WAF | Bot Protection | Geo-Blocking | DNS Management | Analytics | SSO | MFA | Passkeys
+</p>
+
+---
 
 ## Screenshots
 
@@ -52,6 +64,8 @@ A powerful, self-hosted reverse proxy manager with built-in SSL certificate mana
 ![Settings](images/settings.png)
 *Backup, API keys, webhooks, and SMTP configuration*
 
+---
+
 ## Features
 
 ### Reverse Proxy Management
@@ -59,15 +73,20 @@ A powerful, self-hosted reverse proxy manager with built-in SSL certificate mana
 - **Multiple Backends** - Support for HTTP and HTTPS upstream servers
 - **Load Balancing** - Distribute traffic across multiple backend servers
 - **WebSocket Support** - Full WebSocket proxying capabilities
-- **HTTP/3 (QUIC)** - Modern protocol support for improved performance
+- **HTTP/2 & HTTP/3 (QUIC)** - Modern protocol support for improved performance
+- **Custom Nginx Config** - Advanced configuration options per host
+- **HSTS Headers** - Configurable Strict-Transport-Security with preload support
+- **SSRF Protection** - Blocks localhost and cloud metadata endpoint access
 
 ### SSL/TLS Certificate Management
 - **Let's Encrypt Integration** - Automatic SSL certificate issuance and renewal
 - **HTTP-01 & DNS-01 Challenges** - Support for both validation methods
 - **Wildcard Certificates** - Issue wildcard certs via DNS-01 challenge
-- **Custom Certificates** - Import your own SSL certificates
-- **Certificate Monitoring** - Automatic expiry alerts and health checks
+- **Custom Certificates** - Import your own SSL certificates (PEM format)
+- **Certificate Monitoring** - Automatic expiry alerts (14/30/365 days)
+- **Certificate Transparency** - CT log monitoring for your domains
 - **Rate Limit Tracking** - Prevents hitting Let's Encrypt rate limits
+- **Multi-Account Support** - Manage multiple ACME accounts
 
 ### DNS Management
 - **Multi-Provider Support** - Cloudflare and Hetzner DNS integration
@@ -81,15 +100,27 @@ A powerful, self-hosted reverse proxy manager with built-in SSL certificate mana
 - **SQL Injection Protection** - Detects and blocks SQL injection attempts
 - **XSS Prevention** - Cross-site scripting attack mitigation
 - **Path Traversal Detection** - Blocks directory traversal attacks
+- **Body Content Inspection** - Deep request analysis
 - **Custom Rules** - Define your own WAF rules per host
 - **Real-time Event Logging** - View and analyze security events
+- **IP Banning** - Automatic and manual IP blocking
+- **Ban Whitelist** - Exclude trusted IPs from blocking
 
 ### Bot Protection
 - **JavaScript Challenge** - Browser verification for suspicious requests
+- **CAPTCHA Slider Challenge** - Human verification system
 - **Threat Scoring** - Intelligent threat analysis and scoring
 - **Automatic Banning** - Block malicious IPs automatically
-- **GeoIP Integration** - Country-based access control
+- **Progressive Bans** - Escalating ban durations (1h, 6h, 24h, permanent)
+- **Bot Whitelist** - Allow known good bots
 - **Configurable Thresholds** - Fine-tune protection levels per host
+
+### Geo-Blocking & GeoIP
+- **Country-based Blocking** - Block or allow traffic by country
+- **GeoIP Database** - Automatic IP geolocation
+- **Flexible Rules** - Allow-list or block-list mode
+- **Geographic Analytics** - Visualize traffic origins on a world map
+- **Internal IP Whitelist** - Automatic bypass for private IPs
 
 ### Rate Limiting
 - **Request Rate Limiting** - Protect against DDoS and abuse
@@ -97,40 +128,96 @@ A powerful, self-hosted reverse proxy manager with built-in SSL certificate mana
 - **Burst Handling** - Allow temporary traffic spikes
 - **IP Whitelisting** - Bypass limits for trusted IPs
 - **Redis-backed** - Distributed rate limiting across instances
+- **Progressive Blocking** - Escalating responses for repeat offenders
 
 ### Analytics & Monitoring
 - **Real-time Dashboard** - Live traffic and request monitoring
-- **Traffic Analytics** - Detailed request statistics and trends
+- **Traffic Analytics** - Detailed request statistics and trends (10min to 365 days)
 - **Geographic Distribution** - Visualize traffic origins on a world map
 - **Protocol Distribution** - HTTP/HTTPS/HTTP2/HTTP3 breakdown
 - **Top Endpoints** - Most accessed paths and resources
-- **Uptime Monitoring** - Backend health checks with alerting
+- **Bandwidth Metrics** - Bits per second monitoring
+- **Historical Data** - Long-term analytics storage
+
+### Uptime Monitoring
+- **TCP Health Checks** - Verify backend connectivity
+- **HTTP/HTTPS Checks** - Full request-based health verification
+- **Latency Measurement** - Response time tracking
+- **Availability Percentage** - Uptime statistics
+- **Historical Series** - Uptime trends over time
+- **Status Change Tracking** - Detect and alert on state changes
 
 ### User Management
 - **Multi-User Support** - Multiple admin accounts with role-based access
-- **Two-Factor Authentication (MFA)** - TOTP-based 2FA with backup codes
-- **Passkey Support** - WebAuthn/FIDO2 passwordless authentication
-- **SSO Integration** - Single Sign-On with Microsoft Entra ID (Azure AD)
-- **Session Management** - Automatic idle timeout and session control
-- **Audit Logging** - Track all user actions and changes
+- **Role-Based Access** - Admin and User roles
+- **Password Policy** - Strong password requirements (8-128 chars, mixed case, numbers)
+- **Bcrypt Hashing** - Secure password storage (12 rounds)
 
-### System Features
-- **Backup & Restore** - Full configuration backup with encryption
-- **API Access** - RESTful API with API key authentication
+### Multi-Factor Authentication (MFA)
+- **TOTP Support** - Google Authenticator, Authy compatible
+- **QR Code Setup** - Easy enrollment via QR code
+- **Backup Codes** - 10 single-use recovery codes
+- **Encrypted Storage** - ChaCha20-Poly1305 encryption for secrets
+- **Admin MFA Reset** - Administrators can reset user MFA
+
+### Passkey Authentication (WebAuthn/FIDO2)
+- **Passwordless Login** - Sign in with biometrics or security keys
+- **Multiple Passkeys** - Register multiple devices per user
+- **Passkey Management** - Rename and delete passkeys
+- **Cross-Platform** - Works on all modern browsers and devices
+
+### Single Sign-On (SSO)
+- **Microsoft Entra ID** - Azure AD integration
+- **PKCE OAuth2** - Secure authentication flow
+- **User Profile Sync** - Automatic profile updates from IdP
+- **Group Membership** - Access control based on AD groups
+- **Auto User Creation** - Automatic account provisioning
+- **User Photo Sync** - Fetch profile pictures from Azure AD
+
+### Backup & Restore
+- **Full Configuration Backup** - Export all settings and data
+- **Encrypted Backups** - Secure backup storage
+- **Backup Scheduling** - Automated backup creation
+- **One-Click Restore** - Easy system recovery
+- **Backup Download** - Download backups as files
+
+### API & Integration
+- **RESTful API** - Full API access for automation
+- **API Key Authentication** - Secure API access tokens
 - **Webhooks** - Event notifications to external services
 - **SMTP Integration** - Email notifications for alerts
+- **Notification Preferences** - Per-user notification settings
+- **Quiet Windows** - Suppress notifications during specified hours
+
+### Audit Logging
+- **Comprehensive Logging** - Track all system changes
+- **User Attribution** - Who did what and when
+- **IP Tracking** - Client IP logging
+- **Full-Text Search** - Search through audit logs
+- **Filtering & Pagination** - Easy log navigation
+- **SSO Audit Trail** - Separate SSO-specific logging
+
+### System Features
 - **Dark Mode UI** - Modern, responsive web interface
 - **Multi-language** - English and German interface
+- **Real-time Updates** - WebSocket-based live updates
+- **Mobile Responsive** - Works on all screen sizes
+- **CSRF Protection** - Secure form submissions
+- **Session Management** - Automatic idle timeout (30 min)
+
+---
 
 ## Architecture
 
 ProxyDeck runs as a Docker container with the following components:
 
-- **Nginx** - High-performance reverse proxy server
+- **Nginx** - High-performance reverse proxy server with Lua scripting
 - **Node.js** - Backend API and management server
 - **PostgreSQL** - Configuration and analytics database
-- **Redis** - Caching and distributed rate limiting
+- **Redis** - Caching, rate limiting, and session management
 - **Supervisord** - Process management
+
+---
 
 ## Requirements
 
@@ -138,6 +225,8 @@ ProxyDeck runs as a Docker container with the following components:
 - 2GB RAM minimum (4GB recommended)
 - 2 CPU cores minimum
 - Ports 80, 443, and 8070 available
+
+---
 
 ## Quick Start
 
@@ -187,6 +276,8 @@ docker compose -f docker-compose.prod.yml up -d
 
 Open `http://your-server-ip:8070` in your browser and log in with your admin credentials.
 
+---
+
 ## Configuration
 
 ### Environment Variables
@@ -229,6 +320,8 @@ Open `http://your-server-ip:8070` in your browser and log in with your admin cre
 | `pgdata` | PostgreSQL database |
 | `redis_data` | Redis persistence |
 
+---
+
 ## Updating
 
 To update to a new version:
@@ -255,14 +348,22 @@ IMAGE_TAG=v0.1.0
 | `v0.1.x` | Beta releases (v0.1.0, v0.1.1, ...) |
 | `v1.x.x` | Stable releases (coming soon) |
 
+---
+
 ## Security Recommendations
 
 1. **Change default credentials** - Never use default passwords in production
 2. **Enable MFA** - Set up two-factor authentication for all admin accounts
-3. **Use HTTPS** - Set up SSL for the management dashboard
-4. **Restrict access** - Use firewall rules to limit dashboard access
-5. **Regular backups** - Enable automatic backups in settings
-6. **Keep updated** - Regularly update to the latest version
+3. **Use Passkeys** - Consider passwordless authentication for enhanced security
+4. **Use HTTPS** - Set up SSL for the management dashboard
+5. **Restrict access** - Use firewall rules to limit dashboard access
+6. **Enable Geo-Blocking** - Block traffic from countries you don't serve
+7. **Configure WAF** - Enable WAF rules for all public-facing hosts
+8. **Regular backups** - Enable automatic backups in settings
+9. **Keep updated** - Regularly update to the latest version
+10. **Review audit logs** - Monitor for suspicious activity
+
+---
 
 ## API Documentation
 
@@ -272,6 +373,8 @@ Example:
 ```bash
 curl -H "X-API-Key: your-api-key" http://localhost:8070/api/proxies
 ```
+
+---
 
 ## License
 

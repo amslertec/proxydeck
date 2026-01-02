@@ -17,61 +17,95 @@
 ## Screenshots
 
 ### Dashboard
+
 ![Dashboard](images/dashboard.png)
 
 *Real-time overview of traffic, requests, and system health*
 
+<br>
+
 ### Proxy Hosts
+
 ![Proxy Hosts](images/hosts.png)
 
 *Manage reverse proxy configurations with SSL settings*
 
+<br>
+
 ### SSL Certificates
+
 ![SSL Certificates](images/certs.png)
 
 *Let's Encrypt integration with automatic renewal*
 
+<br>
+
 ### WAF & Security
+
 ![WAF Events](images/waf.png)
 
 *Web Application Firewall with real-time event logging*
 
+<br>
+
 ### Bot Protection
+
 ![Bot Protection](images/bot-protection.png)
 
 *JavaScript challenges and threat scoring*
 
+<br>
+
 ### Analytics
+
 ![Analytics](images/analytics.png)
 
 *Traffic analytics with geographic distribution*
 
+<br>
+
 ### Status Monitoring
+
 ![Status](images/status.png)
 
 *Uptime monitoring and health checks*
 
+<br>
+
 ### User Management
+
 ![Users](images/users.png)
 
 *Multi-user support with MFA and Passkeys*
 
+<br>
+
 ### DNS Management
+
 ![DNS](images/dns.png)
 
 *Manage DNS zones and records with Cloudflare/Hetzner integration*
 
+<br>
+
 ### Profile
+
 ![Profile](images/profile.png)
 
 *User profile with MFA and Passkey management*
 
+<br>
+
 ### Audit Log
+
 ![Audit](images/audit.png)
 
 *Complete audit trail of all system changes*
 
+<br>
+
 ### Settings
+
 ![Settings](images/settings.png)
 
 *Backup, API keys, webhooks, and SMTP configuration*
@@ -236,7 +270,7 @@ ProxyDeck runs as a Docker container with the following components:
 - Docker and Docker Compose
 - 2GB RAM minimum (4GB recommended)
 - 2 CPU cores minimum
-- Ports 80, 443, and 8070 available
+- Ports 80, 443, and 8080 available
 
 ---
 
@@ -286,7 +320,7 @@ docker compose -f docker-compose.prod.yml up -d
 
 ### 6. Access the dashboard
 
-Open `http://your-server-ip:8070` in your browser and log in with your admin credentials.
+Open `http://your-server-ip:8080` in your browser and log in with your admin credentials.
 
 ---
 
@@ -316,7 +350,7 @@ Open `http://your-server-ip:8070` in your browser and log in with your admin cre
 |------|----------|-------------|
 | 80 | HTTP | HTTP traffic and ACME challenges |
 | 443 | HTTPS | HTTPS traffic |
-| 8070 | HTTP | Management dashboard |
+| 8080 | HTTP | Management dashboard |
 
 ### Volumes
 
@@ -383,7 +417,7 @@ ProxyDeck provides a RESTful API for automation. Generate API keys in Settings >
 
 Example:
 ```bash
-curl -H "X-API-Key: your-api-key" http://localhost:8070/api/proxies
+curl -H "X-API-Key: your-api-key" http://localhost:8080/api/proxies
 ```
 
 ---
@@ -395,5 +429,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Note**: This repository contains only the deployment configuration. The application is distributed as a Docker image via Docker Hub.
-
-

@@ -3,7 +3,7 @@ services:
     image: pamsler/proxydeck:${IMAGE_TAG:-latest}
     container_name: proxydeck
     depends_on: [db, redis]
-    ports: ["80:80","443:443","8070:8080"]
+    ports: ["80:80","443:443","8080:8080"]
     environment:
       TZ: ${TZ:-Europe/Zurich}
       ADMIN_USER: ${ADMIN_USER:?ADMIN_USER is required}

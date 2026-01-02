@@ -193,7 +193,7 @@ Open `http://your-server-ip:8070` in your browser and log in with your admin cre
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `IMAGE_TAG` | No | `latest` | Docker image version tag |
+| `IMAGE_TAG` | No | `latest` | Docker image version (latest, v0.1.x) |
 | `ADMIN_USER` | Yes | - | Admin username |
 | `ADMIN_PASS` | Yes | - | Admin password |
 | `JWT_SECRET` | Yes | - | JWT signing secret (64+ chars) |
@@ -244,8 +244,16 @@ docker compose -f docker-compose.prod.yml up -d
 Or specify a specific version in `.env`:
 
 ```bash
-IMAGE_TAG=v1.2.0
+IMAGE_TAG=v0.1.0
 ```
+
+### Available Tags
+
+| Tag | Description |
+|-----|-------------|
+| `latest` | Latest stable release (recommended) |
+| `v0.1.x` | Beta releases (v0.1.0, v0.1.1, ...) |
+| `v1.x.x` | Stable releases (coming soon) |
 
 ## Security Recommendations
 

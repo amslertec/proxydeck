@@ -22,6 +22,14 @@
 # Documentation
 !README.md
 !LICENSE
+!SECURITY.md
+!CHANGELOG.md
+!CONTRIBUTING.md
+!CODE_OF_CONDUCT.md
+
+# GitHub templates and config
+!.github/
+!.github/**
 
 # Allow images directory for README
 !images/

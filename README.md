@@ -53,6 +53,7 @@
 
 ### User Management
 ![Users](images/users.png)
+
 *Multi-user support with MFA and Passkeys*
 
 ### DNS Management
@@ -394,4 +395,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Note**: This repository contains only the deployment configuration. The application is distributed as a Docker image via Docker Hub.
+
 

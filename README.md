@@ -38,7 +38,7 @@ A powerful, self-hosted reverse proxy manager with built-in SSL certificate mana
 
 ### DNS Management
 ![DNS](images/dns.png)
-*DNS provider configuration for wildcard certificates*
+*Manage DNS zones and records with Cloudflare/Hetzner integration*
 
 ### Profile
 ![Profile](images/profile.png)
@@ -64,10 +64,18 @@ A powerful, self-hosted reverse proxy manager with built-in SSL certificate mana
 ### SSL/TLS Certificate Management
 - **Let's Encrypt Integration** - Automatic SSL certificate issuance and renewal
 - **HTTP-01 & DNS-01 Challenges** - Support for both validation methods
-- **Multiple DNS Providers** - Cloudflare, Route53, and more for wildcard certificates
+- **Wildcard Certificates** - Issue wildcard certs via DNS-01 challenge
 - **Custom Certificates** - Import your own SSL certificates
 - **Certificate Monitoring** - Automatic expiry alerts and health checks
 - **Rate Limit Tracking** - Prevents hitting Let's Encrypt rate limits
+
+### DNS Management
+- **Multi-Provider Support** - Cloudflare and Hetzner DNS integration
+- **Zone Management** - View and manage all your DNS zones
+- **Record Management** - Create, update, and delete DNS records (A, AAAA, CNAME, MX, TXT, etc.)
+- **Available Domains** - See which domains from your DNS zones can be used for new proxy hosts
+- **Credential Verification** - Validate API tokens before saving
+- **DNS-01 Automation** - Automatic DNS record creation for Let's Encrypt wildcard certificates
 
 ### Web Application Firewall (WAF)
 - **SQL Injection Protection** - Detects and blocks SQL injection attempts

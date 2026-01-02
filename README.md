@@ -18,30 +18,37 @@
 
 ### Dashboard
 ![Dashboard](images/dashboard.png)
+
 *Real-time overview of traffic, requests, and system health*
 
 ### Proxy Hosts
 ![Proxy Hosts](images/hosts.png)
+
 *Manage reverse proxy configurations with SSL settings*
 
 ### SSL Certificates
 ![SSL Certificates](images/certs.png)
+
 *Let's Encrypt integration with automatic renewal*
 
 ### WAF & Security
 ![WAF Events](images/waf.png)
+
 *Web Application Firewall with real-time event logging*
 
 ### Bot Protection
 ![Bot Protection](images/bot-protection.png)
+
 *JavaScript challenges and threat scoring*
 
 ### Analytics
 ![Analytics](images/analytics.png)
+
 *Traffic analytics with geographic distribution*
 
 ### Status Monitoring
 ![Status](images/status.png)
+
 *Uptime monitoring and health checks*
 
 ### User Management
@@ -50,18 +57,22 @@
 
 ### DNS Management
 ![DNS](images/dns.png)
+
 *Manage DNS zones and records with Cloudflare/Hetzner integration*
 
 ### Profile
 ![Profile](images/profile.png)
+
 *User profile with MFA and Passkey management*
 
 ### Audit Log
 ![Audit](images/audit.png)
+
 *Complete audit trail of all system changes*
 
 ### Settings
 ![Settings](images/settings.png)
+
 *Backup, API keys, webhooks, and SMTP configuration*
 
 ---
@@ -383,3 +394,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Note**: This repository contains only the deployment configuration. The application is distributed as a Docker image via Docker Hub.
+

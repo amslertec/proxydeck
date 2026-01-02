@@ -2,6 +2,44 @@
 
 A powerful, self-hosted reverse proxy manager with built-in SSL certificate management, Web Application Firewall (WAF), bot protection, and real-time analytics.
 
+## Screenshots
+
+### Dashboard
+![Dashboard](images/dashboard.png)
+*Real-time overview of traffic, requests, and system health*
+
+### Proxy Hosts
+![Proxy Hosts](images/hosts.png)
+*Manage reverse proxy configurations with SSL settings*
+
+### SSL Certificates
+![SSL Certificates](images/certs.png)
+*Let's Encrypt integration with automatic renewal*
+
+### WAF & Security
+![WAF Events](images/waf.png)
+*Web Application Firewall with real-time event logging*
+
+### Bot Protection
+![Bot Protection](images/bot-protection.png)
+*JavaScript challenges and threat scoring*
+
+### Analytics
+![Analytics](images/analytics.png)
+*Traffic analytics with geographic distribution*
+
+### Status Monitoring
+![Status](images/status.png)
+*Uptime monitoring and health checks*
+
+### User Management
+![Users](images/users.png)
+*Multi-user support with MFA and Passkeys*
+
+### Settings
+![Settings](images/settings.png)
+*Backup, API keys, webhooks, and SMTP configuration*
+
 ## Features
 
 ### Reverse Proxy Management
@@ -207,18 +245,9 @@ Example:
 curl -H "X-API-Key: your-api-key" http://localhost:8070/api/proxies
 ```
 
-## Support
-
-- **Issues**: [GitHub Issues](https://github.com/pamsler/proxydeck/issues)
-- **Documentation**: [Wiki](https://github.com/pamsler/proxydeck/wiki)
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Author
-
-Created by [Pascal Amsler](https://github.com/pamsler)
 
 ---
 

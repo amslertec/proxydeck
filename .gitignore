@@ -1,0 +1,28 @@
+# =============================================================================
+# ProxyDeck - Public Repository .gitignore
+# =============================================================================
+# This repository only contains deployment files.
+# The source code is private and distributed via Docker Hub.
+# =============================================================================
+
+# Block EVERYTHING by default
+*
+
+# =============================================================================
+# ALLOWED FILES (whitelist)
+# =============================================================================
+
+# Git configuration
+!.gitignore
+
+# Deployment files
+!docker-compose.prod.yml
+!.env.example
+
+# Documentation
+!README.md
+!LICENSE
+
+# Allow images directory for README
+!images/
+!images/**

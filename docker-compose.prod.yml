@@ -13,7 +13,7 @@ services:
       MFA_ENCRYPTION_KEY: ${MFA_ENCRYPTION_KEY:?MFA_ENCRYPTION_KEY is required}
       ACME_EMAIL: ${ACME_EMAIL:-}
       ACME_ACCOUNT: ${ACME_ACCOUNT:-}
-      # Auto-Setup: Erstellt Proxy + SSL beim ersten Start
+      # Auto-Setup: Creates proxy + SSL on first start
       FRONTEND_URL: ${FRONTEND_URL:-}
       PGHOST: ${PGHOST:-db}
       PGUSER: ${PGUSER:-proxydeck}
@@ -29,7 +29,7 @@ services:
       LE_CONFIG_DIR: /etc/letsencrypt
       LE_WORK_DIR: /var/lib/letsencrypt
       LE_LOGS_DIR: /var/log/letsencrypt
-      # Performance-Schalter
+      # Performance settings
       ENABLE_H3: "1"
       MICROCACHE_SECS: "5"
       ISOLATION_HEADERS: "0"

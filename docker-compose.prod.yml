@@ -43,6 +43,8 @@ services:
       - le_log:/var/log/letsencrypt
       - ./backup:/var/lib/proxydeck/backups
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     mem_limit: 2g
     memswap_limit: 2.5g
     cpus: 2.0

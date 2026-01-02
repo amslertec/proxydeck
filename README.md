@@ -276,9 +276,7 @@ ProxyDeck runs as a Docker container with the following components:
 
 ## Quick Start
 
-### Option A: Minimal Installation (recommended)
-
-Download only the required files:
+### 1. Download files
 
 ```bash
 mkdir proxydeck && cd proxydeck
@@ -286,17 +284,7 @@ curl -fsSL https://raw.githubusercontent.com/pamsler/proxydeck/main/docker-compo
 curl -fsSL https://raw.githubusercontent.com/pamsler/proxydeck/main/.env.example -o .env
 ```
 
-### Option B: Full Installation
-
-Clone the complete repository including documentation:
-
-```bash
-git clone https://github.com/pamsler/proxydeck.git
-cd proxydeck
-cp .env.example .env
-```
-
-### Configure environment
+### 2. Configure environment
 
 Edit `.env` and set at minimum:
 
@@ -313,19 +301,19 @@ MFA_ENCRYPTION_KEY=your-64-char-hex-key
 ACME_EMAIL=your-email@example.com
 ```
 
-### Create backup directory
+### 3. Create backup directory
 
 ```bash
 mkdir -p backup
 ```
 
-### Start ProxyDeck
+### 4. Start ProxyDeck
 
 ```bash
 docker compose -f docker-compose.prod.yml up -d
 ```
 
-### Access the dashboard
+### 5. Access the dashboard
 
 Open `http://your-server-ip:8080` in your browser and log in with your admin credentials.
 

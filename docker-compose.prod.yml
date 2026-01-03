@@ -2,7 +2,11 @@ services:
   proxydeck:
     image: pamsler/proxydeck:${IMAGE_TAG:-latest}
     container_name: proxydeck
-    depends_on: [db, redis]
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     ports: ["80:80","443:443","8080:8080"]
     environment:
       TZ: ${TZ:-Europe/Zurich}
@@ -83,6 +87,12 @@ services:
     restart: unless-stopped
     mem_limit: 1g
     cpus: 1.0
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${PGUSER:-proxydeck} -d ${PGDATABASE:-proxydeck}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   # Redis for distributed rate limiting & caching
   redis:

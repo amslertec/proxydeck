@@ -434,6 +434,130 @@ curl -H "X-API-Key: your-api-key" http://localhost:8080/api/proxies
 
 ---
 
+## Monitoring & Observability
+
+ProxyDeck provides built-in endpoints for monitoring with Prometheus and Grafana.
+
+### Health Checks
+
+| Endpoint | Description |
+|----------|-------------|
+| `GET /health` | Full health check (database, Redis) |
+| `GET /health/live` | Liveness probe (always 200 if running) |
+| `GET /health/ready` | Readiness probe (checks database) |
+
+Example:
+```bash
+curl http://localhost:8080/health
+```
+
+Response:
+```json
+{
+  "status": "healthy",
+  "timestamp": "2024-01-03T12:00:00.000Z",
+  "uptime": 3600,
+  "checks": {
+    "database": { "ok": true, "latency": 2 },
+    "redis": { "ok": true }
+  }
+}
+```
+
+### Prometheus Metrics
+
+ProxyDeck exposes metrics in Prometheus format at `/metrics`.
+
+```bash
+curl http://localhost:8080/metrics
+```
+
+#### Available Metrics
+
+| Metric | Type | Description |
+|--------|------|-------------|
+| `proxydeck_http_requests_total` | Counter | Total HTTP requests by method, status, route |
+| `proxydeck_http_request_duration_seconds` | Histogram | Request duration distribution |
+| `proxydeck_http_requests_in_flight` | Gauge | Currently processing requests |
+| `proxydeck_proxies_total` | Gauge | Total configured proxy hosts |
+| `proxydeck_proxies_enabled` | Gauge | Enabled proxy hosts |
+| `proxydeck_proxies_healthy` | Gauge | Healthy proxy hosts (uptime check) |
+| `proxydeck_waf_events_total` | Counter | WAF events by action and reason |
+| `proxydeck_waf_bans_total` | Counter | WAF bans by source and type |
+| `proxydeck_waf_active_bans` | Gauge | Currently active WAF bans |
+| `proxydeck_db_pool_total` | Gauge | Database connection pool size |
+| `proxydeck_db_pool_idle` | Gauge | Idle database connections |
+| `proxydeck_db_pool_waiting` | Gauge | Waiting database queries |
+| `proxydeck_redis_connected` | Gauge | Redis connection status (1/0) |
+| `proxydeck_uptime_seconds` | Gauge | Process uptime in seconds |
+
+### Prometheus Configuration
+
+Add ProxyDeck to your `prometheus.yml`:
+
+```yaml
+scrape_configs:
+  - job_name: 'proxydeck'
+    static_configs:
+      - targets: ['proxydeck:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+```
+
+If running Prometheus outside Docker, use your server's IP:
+
+```yaml
+scrape_configs:
+  - job_name: 'proxydeck'
+    static_configs:
+      - targets: ['your-server-ip:8080']
+```
+
+### Grafana Dashboard
+
+Import the metrics into Grafana and create dashboards for:
+
+- **Request Rate**: `rate(proxydeck_http_requests_total[5m])`
+- **Error Rate**: `rate(proxydeck_http_requests_total{status="5xx"}[5m])`
+- **Request Duration**: `histogram_quantile(0.95, rate(proxydeck_http_request_duration_seconds_bucket[5m]))`
+- **Active Bans**: `proxydeck_waf_active_bans`
+- **Proxy Health**: `proxydeck_proxies_healthy / proxydeck_proxies_enabled * 100`
+
+### Docker Compose with Prometheus & Grafana
+
+Example `docker-compose.monitoring.yml`:
+
+```yaml
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9090:9090"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+
+volumes:
+  prometheus_data:
+  grafana_data:
+```
+
+---
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

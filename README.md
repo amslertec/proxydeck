@@ -117,7 +117,13 @@
 ### Reverse Proxy Management
 - **Easy Host Configuration** - Add and manage proxy hosts through an intuitive web interface
 - **Multiple Backends** - Support for HTTP and HTTPS upstream servers
-- **Load Balancing** - Distribute traffic across multiple backend servers
+- **Upstream Load Balancing** - Distribute traffic across multiple backend servers with:
+  - **Load Balancing Methods**: Round Robin (default), Least Connections, IP Hash
+  - **Server Weights**: Configure traffic distribution per server (1-100)
+  - **Backup Servers**: Define fallback servers for high availability
+  - **Health Checks**: Real-time TCP health status for each upstream server
+  - **Advanced Options**: Max fails, fail timeout, server down toggle
+  - **Drag & Drop**: Reorder servers via drag and drop
 - **WebSocket Support** - Full WebSocket proxying capabilities
 - **HTTP/2 & HTTP/3 (QUIC)** - Modern protocol support for improved performance
 - **Custom Nginx Config** - Advanced configuration options per host

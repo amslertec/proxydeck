@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/logo.png" alt="ProxyDeck Logo" width="200">
+  <img src="images/proxydeck_logo.png" alt="ProxyDeck Logo" width="200">
 </p>
 
 <h1 align="center">ProxyDeck</h1>
@@ -490,3 +490,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Note**: This repository contains only the deployment configuration. The application is distributed as a Docker image via Docker Hub.
+

@@ -9,106 +9,18 @@
 </p>
 
 <p align="center">
-  Reverse Proxy | SSL Automation | WAF | Bot Protection | Geo-Blocking | DNS Management | Analytics | SSO | MFA | Passkeys
+  Reverse Proxy | SSL Automation | WAF | Bot Protection | Geo-Blocking | DNS Management | Analytics | SSO | MFA | Passkeys | Granular Permissions
 </p>
 
 ---
 
-## Screenshots
+## Screenshot
 
 ### Dashboard
 
 ![Dashboard](images/dashboard.png)
 
 *Real-time overview of traffic, requests, and system health*
-
-<br>
-
-### Proxy Hosts
-
-![Proxy Hosts](images/hosts.png)
-
-*Manage reverse proxy configurations with SSL settings*
-
-<br>
-
-### SSL Certificates
-
-![SSL Certificates](images/certs.png)
-
-*Let's Encrypt integration with automatic renewal*
-
-<br>
-
-### WAF & Security
-
-![WAF Events](images/waf.png)
-
-*Web Application Firewall with real-time event logging*
-
-<br>
-
-### Bot Protection
-
-![Bot Protection](images/bot-protection.png)
-
-*JavaScript challenges and threat scoring*
-
-<br>
-
-### Analytics
-
-![Analytics](images/analytics.png)
-
-*Traffic analytics with geographic distribution*
-
-<br>
-
-### Status Monitoring
-
-![Status](images/status.png)
-
-*Uptime monitoring and health checks*
-
-<br>
-
-### User Management
-
-![Users](images/users.png)
-
-*Multi-user support with MFA and Passkeys*
-
-<br>
-
-### DNS Management
-
-![DNS](images/dns.png)
-
-*Manage DNS zones and records with Cloudflare/Hetzner integration*
-
-<br>
-
-### Profile
-
-![Profile](images/profile.png)
-
-*User profile with MFA and Passkey management*
-
-<br>
-
-### Audit Log
-
-![Audit](images/audit.png)
-
-*Complete audit trail of all system changes*
-
-<br>
-
-### Settings
-
-![Settings](images/settings.png)
-
-*Backup, API keys, webhooks, and SMTP configuration*
 
 ---
 
@@ -199,9 +111,15 @@
 - **Historical Series** - Uptime trends over time
 - **Status Change Tracking** - Detect and alert on state changes
 
-### User Management
+### User Management & Permissions
 - **Multi-User Support** - Multiple admin accounts with role-based access
-- **Role-Based Access** - Admin and User roles
+- **Granular Permissions** - Fine-grained access control per user:
+  - 8 permission categories (Hosts, Certs, WAF, DNS, Users, Settings, Audit, Analytics)
+  - Multiple actions per category (view, create, edit, delete, manage)
+  - Permission presets (Read-Only, Power-User, Full Access)
+  - Live updates without re-login required
+- **Role-Based Access** - Admin (full access) and User (configurable) roles
+- **Permission-Aware UI** - Buttons disabled with tooltips for unauthorized actions
 - **Password Policy** - Strong password requirements (8-128 chars, mixed case, numbers)
 - **Bcrypt Hashing** - Secure password storage (12 rounds)
 
@@ -225,6 +143,7 @@
 - **Group Membership** - Access control based on AD groups
 - **Auto User Creation** - Automatic account provisioning
 - **User Photo Sync** - Fetch profile pictures from Azure AD
+- **SSO User Permissions** - Granular permissions for SSO accounts
 
 ### Backup & Restore
 - **Full Configuration Backup** - Export all settings and data
@@ -401,7 +320,7 @@ docker compose -f docker-compose.prod.yml up -d
 Or specify a specific version in `.env`:
 
 ```bash
-IMAGE_TAG=v0.1.0
+IMAGE_TAG=v0.1.18
 ```
 
 ### Available Tags
@@ -409,8 +328,7 @@ IMAGE_TAG=v0.1.0
 | Tag | Description |
 |-----|-------------|
 | `latest` | Latest stable release (recommended) |
-| `v0.1.x` | Beta releases (v0.1.0, v0.1.1, ...) |
-| `v1.x.x` | Stable releases (coming soon) |
+| `v0.1.x` | Current releases |
 
 ---
 
@@ -421,11 +339,12 @@ IMAGE_TAG=v0.1.0
 3. **Use Passkeys** - Consider passwordless authentication for enhanced security
 4. **Use HTTPS** - Set up SSL for the management dashboard
 5. **Restrict access** - Use firewall rules to limit dashboard access
-6. **Enable Geo-Blocking** - Block traffic from countries you don't serve
-7. **Configure WAF** - Enable WAF rules for all public-facing hosts
-8. **Regular backups** - Enable automatic backups in settings
-9. **Keep updated** - Regularly update to the latest version
-10. **Review audit logs** - Monitor for suspicious activity
+6. **Configure Permissions** - Use granular permissions to limit user access
+7. **Enable Geo-Blocking** - Block traffic from countries you don't serve
+8. **Configure WAF** - Enable WAF rules for all public-facing hosts
+9. **Regular backups** - Enable automatic backups in settings
+10. **Keep updated** - Regularly update to the latest version
+11. **Review audit logs** - Monitor for suspicious activity
 
 ---
 

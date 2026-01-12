@@ -62,11 +62,11 @@ services:
   db:
     image: postgres:16-alpine
     container_name: proxydeck-db
+    shm_size: 512m
     environment:
       POSTGRES_DB: ${PGDATABASE:-proxydeck}
       POSTGRES_USER: ${PGUSER:-proxydeck}
       POSTGRES_PASSWORD: ${PGPASSWORD:-proxydeck}
-    # PostgreSQL performance tuning for 1GB RAM
     command: >
       postgres
       -c shared_buffers=256MB
@@ -121,3 +121,4 @@ volumes:
   le_log:
   pgdata:
   redis_data:
+

@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Reverse Proxy | SSL Automation | WAF | Bot Protection | Geo-Blocking | DNS Management | Analytics | SSO | MFA | Passkeys | Granular Permissions
+  Reverse Proxy | SSL Automation | WAF | Bot Protection | Geo-Blocking | DNS Management | Scheduled Maintenance | Analytics | SSO | MFA | Passkeys | Granular Permissions
 </p>
 
 ---
@@ -78,6 +78,18 @@
 - **Progressive Bans** - Escalating ban durations (1h, 6h, 24h, permanent)
 - **Bot Whitelist** - Allow known good bots
 - **Configurable Thresholds** - Fine-tune protection levels per host
+
+### Scheduled Maintenance Windows
+- **Maintenance Scheduling** - Plan maintenance windows with start and end times
+- **Custom Maintenance Pages** - Branded maintenance pages with countdown timer
+- **Bilingual Support** - Maintenance messages in German and English with language toggle
+- **Predefined Templates** - Quick setup with System Update, Planned Maintenance, and Emergency templates
+- **Custom Templates** - Create custom maintenance messages with optional translations
+- **Dark/Light Mode** - Maintenance page respects user theme preference
+- **Instant Activation** - Maintenance mode activates immediately when start time is now or in the past
+- **Automatic nginx Configuration** - Nginx automatically rewrites config during maintenance
+- **Cancel Early** - End maintenance windows before scheduled end time
+- **Visual Status Indicators** - Yellow "Maintenance" status in host tables and cards
 
 ### Geo-Blocking & GeoIP
 - **Country-based Blocking** - Block or allow traffic by country

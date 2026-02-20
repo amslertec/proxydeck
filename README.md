@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Reverse Proxy | SSL Automation | WAF | Bot Protection | Geo-Blocking | DNS Management | Scheduled Maintenance | Analytics | SSO | MFA | Passkeys | Granular Permissions
+  Reverse Proxy | SSL Automation | WAF | Bot Protection | Geo-Blocking | PIN Access | DNS Management | Scheduled Maintenance | Analytics | SSO | MFA | Passkeys | Granular Permissions
 </p>
 
 ---
@@ -78,6 +78,16 @@
 - **Progressive Bans** - Escalating ban durations (1h, 6h, 24h, permanent)
 - **Bot Whitelist** - Allow known good bots
 - **Configurable Thresholds** - Fine-tune protection levels per host
+
+### Access Control
+- **Password Authentication (Gate)** - Protect hosts with username and password login via WAF rules
+- **PIN Authentication** - Lightweight access control requiring only a PIN (no username needed)
+  - Multiple PINs per rule, securely stored as bcrypt hashes
+  - Configurable per host, multiple hosts, or globally
+  - Dedicated PIN entry page with dark mode and multi-language support
+  - Progressive IP banning after failed attempts
+  - Bypass IPs for trusted networks
+- **Session Cookies** - Secure JWT-based session tokens bound to host, user-agent, and IP subnet
 
 ### Scheduled Maintenance Windows
 - **Maintenance Scheduling** - Plan maintenance windows with start and end times

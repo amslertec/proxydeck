@@ -215,8 +215,8 @@ ProxyDeck runs as a Docker container with the following components:
 ## Requirements
 
 - Docker and Docker Compose
-- 2GB RAM minimum (4GB recommended)
-- 2 CPU cores minimum
+- 4GB RAM minimum (8GB recommended)
+- 2 CPU cores minimum (4 recommended)
 - Ports 80, 443, and 8080 available
 
 ---

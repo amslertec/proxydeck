@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Reverse Proxy | SSL Automation | WAF | Bot Protection | Geo-Blocking | PIN Access | DNS Management | Scheduled Maintenance | Analytics | SSO | MFA | Passkeys | Granular Permissions
+  Reverse Proxy | SSL Automation | WAF | Bot Protection | IP Reputation | Geo-Blocking | PIN Access | DNS Management | Anomaly Detection | Alerting | Scheduled Maintenance | Analytics | SSO | MFA | Passkeys | Granular Permissions
 </p>
 
 ---
@@ -69,6 +69,18 @@
 - **Real-time Event Logging** - View and analyze security events
 - **IP Banning** - Automatic and manual IP blocking
 - **Ban Whitelist** - Exclude trusted IPs from blocking
+- **Host Groups** - Organize hosts into named groups with color coding for bulk operations
+
+### IP Reputation (AbuseIPDB & AlienVault OTX)
+- **External Reputation Checks** - Automatic background IP lookups against AbuseIPDB and AlienVault OTX
+- **AbuseIPDB Integration** - Optional API key (free tier: 1,000 queries/day), reports abuse confidence, ISP, Tor detection
+- **AlienVault OTX** - Works without API key, community threat intelligence with pulse counts and tags
+- **Auto-Ban** - Configurable threshold (default 75/100) with automatic ban for high-risk IPs
+- **Redis Caching** - Results cached (default 24h TTL) to minimize API calls
+- **IP Test Tool** - Live reputation lookup for any IP directly from the WAF dashboard
+- **Whitelist Support** - Exclude trusted IPs/CIDRs from reputation checks
+- **Threat Score Integration** - Reputation score contributes up to +30 points to the threat scoring system
+- **Non-Blocking** - Fire-and-forget checks that never delay or block requests (including streaming)
 
 ### Bot Protection
 - **JavaScript Challenge** - Browser verification for suspicious requests
@@ -124,6 +136,10 @@
 - **Top Endpoints** - Most accessed paths and resources
 - **Bandwidth Metrics** - Bits per second monitoring
 - **Historical Data** - Long-term analytics storage
+- **Response Time Distribution** - P50/P75/P90/P95/P99 percentile breakdown with histogram visualization
+- **Per-Host Latency** - Sortable response time breakdown per upstream host
+- **Traffic Anomaly Detection** - Automatic baseline computation (14-day rolling) with z-score deviation alerts
+- **Anomaly Types** - Traffic spikes/drops, error spikes, bandwidth anomalies with warning/critical severity
 
 ### Uptime Monitoring
 - **TCP Health Checks** - Verify backend connectivity
@@ -174,10 +190,22 @@
 - **One-Click Restore** - Easy system recovery
 - **Backup Download** - Download backups as files
 
+### Alerting & Notifications
+- **Slack Integration** - Rich messages via Incoming Webhooks with color-coded attachments
+- **Discord Integration** - Embed messages with colored sidebars and inline fields
+- **Telegram Integration** - HTML-formatted messages via Bot API with emoji severity indicators
+- **Email Notifications** - SMTP-based alert delivery
+- **Webhook Notifications** - Event-driven HTTP callbacks with Mattermost/Slack compatibility
+- **Enhanced Webhook Filters** - Filter by status code, response time, host, IP pattern, and severity
+- **Per-Rule Channels** - Select notification channels individually per alert rule
+- **Test Buttons** - Verify each notification channel with a test message
+
 ### API & Integration
 - **RESTful API** - Full API access for automation
-- **API Key Authentication** - Secure API access tokens
-- **Webhooks** - Event notifications to external services
+- **API Key Authentication** - Secure API access tokens with tier-based rate limiting
+- **Rate Limit Tiers** - Free, Basic, Pro, Enterprise, and Unlimited tiers with per-key quotas
+- **API Usage Analytics** - Per-key usage tracking with sparkline charts and quota progress
+- **Webhooks** - Event notifications to external services with granular event filters
 - **SMTP Integration** - Email notifications for alerts
 - **Notification Preferences** - Per-user notification settings
 - **Quiet Windows** - Suppress notifications during specified hours

@@ -34,3 +34,4 @@
 # Allow images directory for README
 !images/
 !images/**
+.vercel

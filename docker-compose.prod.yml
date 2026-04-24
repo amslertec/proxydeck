@@ -1,6 +1,6 @@
 services:
   proxydeck:
-    image: pamsler/proxydeck:${IMAGE_TAG:-latest}
+    image: amslertec/proxydeck:${IMAGE_TAG:-latest}
     container_name: proxydeck
     depends_on:
       db:

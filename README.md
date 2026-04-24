@@ -14,6 +14,19 @@
 
 ---
 
+> [!WARNING]
+> **Docker Hub Account Changed (v0.1.43+)**: The image has moved from `pamsler/proxydeck` to `amslertec/proxydeck`.
+> Update your `docker-compose.yml`:
+> ```yaml
+> image: amslertec/proxydeck:${IMAGE_TAG:-latest}
+> ```
+> Then pull the new image:
+> ```bash
+> docker compose pull && docker compose up -d
+> ```
+
+---
+
 ## Screenshot
 
 ### Dashboard
@@ -267,8 +280,8 @@ Before starting, ensure:
 
 ```bash
 mkdir proxydeck && cd proxydeck
-curl -fsSL https://raw.githubusercontent.com/pamsler/proxydeck/main/docker-compose.prod.yml -o docker-compose.prod.yml
-curl -fsSL https://raw.githubusercontent.com/pamsler/proxydeck/main/.env.example -o .env
+curl -fsSL https://raw.githubusercontent.com/amslertec/proxydeck/main/docker-compose.prod.yml -o docker-compose.prod.yml
+curl -fsSL https://raw.githubusercontent.com/amslertec/proxydeck/main/.env.example -o .env
 ```
 
 ### 2. Configure environment

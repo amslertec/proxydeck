@@ -383,7 +383,7 @@ docker compose -f docker-compose.prod.yml up -d
 Or specify a specific version in `.env`:
 
 ```bash
-IMAGE_TAG=v0.1.48
+IMAGE_TAG=v0.1.58
 ```
 
 ### Available Tags

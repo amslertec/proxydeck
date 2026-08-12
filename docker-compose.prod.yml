@@ -7,7 +7,9 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    ports: ["80:80","443:443","8080:8080"]
+    # SECURITY (Audit 2026-07-23, H1): Node-Backend-Port (8080) NICHT mehr zum Host mappen —
+    # er umging nginx/WAF/TLS. Zugriff erfolgt ausschließlich über 80/443 (nginx).
+    ports: ["80:80","443:443"]
     environment:
       TZ: ${TZ:-Europe/Zurich}
       ADMIN_USER: ${ADMIN_USER:?ADMIN_USER is required}
@@ -21,12 +23,13 @@ services:
       FRONTEND_URL: ${FRONTEND_URL:-}
       PGHOST: ${PGHOST:-db}
       PGUSER: ${PGUSER:-proxydeck}
-      PGPASSWORD: ${PGPASSWORD:-proxydeck}
+      PGPASSWORD: ${PGPASSWORD:?PGPASSWORD muss gesetzt sein - siehe Rotation-Runbook}
       PGDATABASE: ${PGDATABASE:-proxydeck}
       PGPORT: "5432"
       # Redis Configuration
       REDIS_HOST: redis
       REDIS_PORT: "6379"
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
       PERMBAN_FILE: /etc/nginx/permanent_bans.d/permanent_bans.conf
       NGINX_CERT_DIR: /etc/nginx/certs
       LETSENCRYPT_BASE: /etc/letsencrypt/live
@@ -66,7 +69,7 @@ services:
     environment:
       POSTGRES_DB: ${PGDATABASE:-proxydeck}
       POSTGRES_USER: ${PGUSER:-proxydeck}
-      POSTGRES_PASSWORD: ${PGPASSWORD:-proxydeck}
+      POSTGRES_PASSWORD: ${PGPASSWORD:?PGPASSWORD muss gesetzt sein - siehe Rotation-Runbook}
     command: >
       postgres
       -c shared_buffers=512MB
@@ -98,7 +101,8 @@ services:
   redis:
     image: redis:7-alpine
     container_name: proxydeck-redis
-    command: redis-server --maxmemory 256mb --maxmemory-policy volatile-lru
+    # SECURITY (Audit 2026-07-23, M7): requirepass nur wenn REDIS_PASSWORD gesetzt (opt-in).
+    command: redis-server --maxmemory 256mb --maxmemory-policy volatile-lru ${REDIS_PASSWORD:+--requirepass "$REDIS_PASSWORD"}
     volumes:
       - redis_data:/data
     restart: unless-stopped
